@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="ad.js" type="text/javascript">
+</script>
+<script>
+$(document).ready(function(){
+   		var asin = sessionStorage.getItem('asin')
+   		var devId = sessionStorage.getItem('devId')
+   		var traceId = sessionStorage.getItem('traceId')
+   		
+        $.ajax({
+            type: "GET",
+            url: "http://ec2-54-165-114-150.compute-1.amazonaws.com:8080/ajServer/info",
+            crossDomain: true,
+            dataType: "jsonp",
+            data: 'mtype=addetail&asin='+asin,
+            success: function (data) {
+            	//alert("Data: " + data.imgurl);
+            	$('#book_intro').text(data.introduction);
+            	$('#book_title').text(data.title);
+            },
+            error: function (err) {
+            }
+    });
+   		behaviourUpdate(asin,devId,'addetail',traceId);
+        $("#add_to_cart").click(addBookToCart(asin,devId,traceId));
+        $( "#go_to_cart" ).click(goToCart(asin,devId,traceId))
+        $("#close_ad").click(closeAd)
+        
+       
+        
+});
+</script>
+<style>
+body {
+    background-color: #EF5922;
+}
+
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ad</title>
+</head>
+<body>
+<table style="width:100%">
+<tr>
+<td></td>
+<td></td>
+<td align="right"><img id="close_ad" src="img/killCorner.png" alt="Close Ad" style="width:50px;height:50px"></td>
+</tr>
+</table>
+<textarea id="book_title" style="font-size: 3em;color: white; background-color: transparent;border: none" rows="1" cols="70">
+</textarea>
+<br>
+<textarea id="book_intro" style="font-size: 1.5em;color: white; background-color: transparent;border: none" rows="5" cols="50">
+</textarea>
+<table style="width:100%">
+<tr>
+<td><img id="add_to_cart" src="img/ver2_1.png" alt="Ad To Cart" style="width:304px;height:228px"></td>
+<td><img id="go_to_cart" src="img/ver2_2.png" alt="Go to Cart" style="width:304px;height:228px"></td>
+</tr>
+</table>
+</body>
+</html>
