@@ -6,11 +6,10 @@
 </script>
 <script>
 $(document).ready(function(){
-   		var asin;
-   		var devId = 'beb610f1-2c1e-4b79-b075-083c9b2df7ea'
-   		sessionStorage.setItem('devId', devId);
-   		var traceId = getTraceId(devId);
-        //sessionStorage.setItem('traceId', traceId);
+   		//var devId = getDeviceId();//'beb610f1-2c1e-4b79-b075-083c9b2df7ea'
+
+   		var devId = getCookie("devId");
+
         $.ajax({
             type: "GET",
             url: "http://ec2-54-165-114-150.compute-1.amazonaws.com:8080/ajServer/info",
@@ -21,29 +20,48 @@ $(document).ready(function(){
             	//alert("Data: " + data.imgurl);
             	$('#book_img').attr("src",data.imgurl);
             	asin = data.asin;
+            	devId = data.devId;
             	sessionStorage.setItem('asin', asin);
-            	
+            	sessionStorage.setItem('devId', devId);
+            	setCookie("devId", devId, 30);
+            	setCookie("asin", asin, 30);
+            	var traceId = getTraceId(devId);
+                sessionStorage.setItem('traceId', traceId);
+                setCookie("traceId", traceId, 30);
+                behaviourUpdate(asin,devId,'showAd',traceId);
+                if (navigator.geolocation) 
+                {
+                	navigator.geolocation.getCurrentPosition(sendLocation);
+            	} 
             },
             error: function (err) {
             } 
     });
-        
-   		$("#add_to_cart").click(addBookToCart(asin,devId,traceId));
-        $("#go_to_cart").click(goToCart(asin,devId,traceId))
+       
+   		$("#add_to_cart").click(addBookToCart);
+        $("#go_to_cart").click(goToCart);
         $("#close_ad").click(closeAd)
         $("#more_info").click(getMoreInfo)
         $("#book_img").click(getMoreInfo)
-        
-        /*if(navigator.geolocation) 
+        function sendLocation(position) 
         {
-        	position = navigator.geolocation.getCurrentPosition();
-        	traceUpdate(devId,position.coords.latitude,osition.coords.longitude,trace_id);
-        }*/        
+           traceUpdate(sessionStorage.getItem('devId'),position.coords.latitude,position.coords.longitude,sessionStorage.getItem('traceId'));
+        }
+        
+        /*function closeAd()
+        {
+        	open(location, '_self').close();
+        }*/
+        
+        
+              
 });
 </script>
 <style>
 body {
     background-color: #EF5922;
+    width: 900px;
+    height: 500px;
 }
 
 </style>
@@ -54,16 +72,20 @@ body {
 <table style="width:100%">
 <tr>
 <td></td>
-<td></td>
-<td align="right"><img id="close_ad" src="img/killCorner.png" alt="Close Ad" style="width:50px;height:50px"></td>
+<td align="right"><img id="close_ad" src="img/killCorner.png" alt="Close Ad"></td>
 </tr>
 </table>
-<img id="book_img" src="" alt="More Info" style="width:128px;height:128px">
+
 <table style="width:100%">
 <tr>
-<td><img id="more_info" src="img/ver1_1.png" alt="More Info" style="width:304px;height:228px"></td>
-<td><img id="add_to_cart" src="img/saveForLater.png" alt="Ad To Cart" style="width:304px;height:228px"></td>
-<td><img id="go_to_cart" src="img/ver2_2.png" alt="Go to Cart" style="width:304px;height:228px"></td>
+<td></td>
+<td><img id="book_img" src="" alt="More Info" align="middle" width="60%" height=auto ></td>
+<td></td>
+</tr>
+<tr>
+<td><img id="more_info" src="img/ver1_1.png" alt="More Info"></td>
+<td><img id="add_to_cart" src="img/saveForLater.png" alt="Ad To Cart"></td>
+<td><img id="go_to_cart" src="img/ver2_2.png" alt="Go to Cart"></td>
 </tr>
 </table>
 </body>

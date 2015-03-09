@@ -17,7 +17,6 @@ $(document).ready(function(){
             dataType: "jsonp",
             data: 'mtype=addetail&asin='+asin,
             success: function (data) {
-            	//alert("Data: " + data.imgurl);
             	$('#book_intro').text(data.introduction);
             	$('#book_title').text(data.title);
             },
@@ -25,8 +24,8 @@ $(document).ready(function(){
             }
     });
    		behaviourUpdate(asin,devId,'addetail',traceId);
-        $("#add_to_cart").click(addBookToCart(asin,devId,traceId));
-        $( "#go_to_cart" ).click(goToCart(asin,devId,traceId))
+   		$("#add_to_cart").click(addBookToCart);
+        $("#go_to_cart").click(goToCart);
         $("#close_ad").click(closeAd)
         
        
@@ -47,7 +46,7 @@ body {
 <tr>
 <td></td>
 <td></td>
-<td align="right"><img id="close_ad" src="img/killCorner.png" alt="Close Ad" style="width:50px;height:50px"></td>
+<td align="right"><img id="close_ad" src="img/killCorner.png" alt="Close Ad"></td>
 </tr>
 </table>
 <textarea id="book_title" style="font-size: 3em;color: white; background-color: transparent;border: none" rows="1" cols="70">
@@ -57,8 +56,8 @@ body {
 </textarea>
 <table style="width:100%">
 <tr>
-<td><img id="add_to_cart" src="img/ver2_1.png" alt="Ad To Cart" style="width:304px;height:228px"></td>
-<td><img id="go_to_cart" src="img/ver2_2.png" alt="Go to Cart" style="width:304px;height:228px"></td>
+<td><img id="add_to_cart" src="img/saveForLater.png" alt="Ad To Cart" ></td>
+<td><img id="go_to_cart" src="img/ver2_2.png" alt="Go to Cart"></td>
 </tr>
 </table>
 </body>
