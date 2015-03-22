@@ -6,9 +6,11 @@
 </script>
 <script>
 $(document).ready(function(){
+		$("#go_to_cart").hide();
    		var asin = sessionStorage.getItem('asin')
    		var devId = sessionStorage.getItem('devId')
    		var traceId = sessionStorage.getItem('traceId')
+   		var cart_quantity = sessionStorage.getItem('cart_quantity')
    		
         $.ajax({
             type: "GET",
@@ -23,6 +25,14 @@ $(document).ready(function(){
             error: function (err) {
             }
     });
+   		
+   		if(cart_quantity>0)
+		{
+			sessionStorage.setItem('cart_quantity', data.cart_quantity);
+			$('#cart_size').text(data.cart_quantity);
+			$("#go_to_cart").show();
+		}
+   		
    		behaviourUpdate(asin,devId,'addetail',traceId);
    		$("#add_to_cart").click(addBookToCart);
         $("#go_to_cart").click(goToCart);
@@ -36,29 +46,39 @@ $(document).ready(function(){
 body {
     background-color: #EF5922;
 }
-
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Ad</title>
 </head>
 <body>
-<table style="width:100%">
+<!-- <table style="width:100%">
 <tr>
 <td></td>
 <td></td>
 <td align="right"><img id="close_ad" src="img/killCorner.png" alt="Close Ad"></td>
 </tr>
 </table>
-<textarea id="book_title" style="font-size: 3em;color: white; background-color: transparent;border: none" rows="1" cols="70">
+<textarea id="book_title" style="font-size: 1.75em;color: white; background-color: transparent;border: none" rows="2" cols="70">
 </textarea>
 <br>
-<textarea id="book_intro" style="font-size: 1.5em;color: white; background-color: transparent;border: none" rows="5" cols="50">
+<textarea id="book_intro" style="font-size: 0.75em;color: white; background-color: transparent;border: none" rows="15" cols="80">
 </textarea>
 <table style="width:100%">
 <tr>
-<td><img id="add_to_cart" src="img/saveForLater.png" alt="Ad To Cart" ></td>
-<td><img id="go_to_cart" src="img/ver2_2.png" alt="Go to Cart"></td>
+<td><img id="add_to_cart" src="img/saveForLater.png" width=auto height="80px" alt="Ad To Cart"></td>
+<td><img id="go_to_cart" src="img/ver2_2.png" width=auto height="80px" alt="Go to Cart"></td>
 </tr>
-</table>
+</table>-->
+
+<textarea id="book_title" style="resize: none; font-size: 1.5em;color: white; background-color: transparent;border: none" rows="4" cols="10">
+</textarea>
+<br>
+<textarea id="book_intro" style="font-size: 0.75em;color: white; background-color: transparent;border: none" rows="15" cols="30">
+</textarea>
+
+<div style="position: relative; left: 0; top: 340; ">
+	<img id="add_to_cart" src="img/saveForLater.png" width=auto height="45px" alt="Ad To Cart" style="position: relative; top: 0px; left: 0px;"/>
+	<img id="go_to_cart" src="img/ver2_2.png" width=auto height="45px" alt="Go to Cart" style="position: relative; top: 0px; left: 34px;"/>
+</div>
 </body>
 </html>

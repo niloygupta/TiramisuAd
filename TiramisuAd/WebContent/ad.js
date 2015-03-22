@@ -8,9 +8,6 @@ function getMoreInfo()
 function addBookToCart(event) 
 {
 	
-	/*asin = getCookie("asin");
-	devId = getCookie("devId");
-	traceId = getCookie("traceId");*/
 	
 	asin = sessionStorage.getItem('asin');
 	devId = sessionStorage.getItem('devId');
@@ -59,12 +56,15 @@ function addBookToCart(event)
         success: function (data) {
         	if(data.result=="success")
         	{
-        		window.location.href = data.purl;
-        		window.location.assign(data.purl);
+        		/*window.location.href = data.purl;
+        		window.location.assign(data.purl);*/
+        		//window.open(data.purl);
+        		top.window.location.href=data.purl;
         	}
         		//window.open(data.purl);	
         },
         error: function (err) {
+        	
         }
   
 		});
@@ -137,7 +137,10 @@ function genDevId(callback)
     	//self.close ();
     	//open(location, '_self').close();
     	//window.history.back();
-    	window.close();
+    	//window.close();
+    	customURL = "empty.html";
+    	window.location.href = customURL;
+    	window.location.assign(customURL);
     }
     
     
