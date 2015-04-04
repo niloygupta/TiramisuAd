@@ -51,10 +51,10 @@ $(document).ready(function(){
             	if(data.cart_quantity>0)
             		{
             			sessionStorage.setItem('cart_quantity', data.cart_quantity);
-            			imgLink = 'img/CartIcon_' + data.cart_quantity + '.png';
+            			imgLink = 'img/cart' + data.cart_quantity + '.png';
             			if(data.cart_quantity>5)
             			{
-            				imgLink = 'img/CartIcon_more.png';
+            				imgLink = 'img/cart6.png';
             			}
             			
             			sessionStorage.setItem('cart_img', imgLink);
