@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ad</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
 <script src="ad.js" type="text/javascript">
 </script>
@@ -71,7 +73,6 @@ $(document).ready(function(){
         $("#close_ad").click(closeAd)
         $("#more_info").click(getMoreInfo)
         $("#book_img").click(getMoreInfo)
-        
         function sendLocation(position) 
         {
            traceUpdate(sessionStorage.getItem('devId'),position.coords.latitude,position.coords.longitude,sessionStorage.getItem('traceId'));
@@ -88,57 +89,67 @@ $(document).ready(function(){
 </script>
 <style>
 body {
-   background-color: #EF5922;
+	background-color: #EF5922;
+}
+.AdWrapper {
+	background-color: rgba(0,0,0,0.60);
+	position: relative;
+	width: 225.28px;
+	height: 100%;
+	min-height: 380px;
+	padding-left: 0;
+	padding-top: 0;
+}
+.AdWrapper #close_ad img {
+	height: 22px;
+	width: 22px;
+	float: right top;
+	position: absolute;
+	top: -6px;
+	right: -6px;
+	z-index: 99;
+}
+#book_img {
+	width: 225.28px;
+	height: 337.92px;
+	position: fixed;
+	padding: 0 0 10px 0;
+}
+/*-- Operation Area --*/
+.Wrapper {
+	position: absolute;
+	bottom: 20px;
+	margin-top: 10px;
+	height: auto;
+	width: 100%;
+}
+img#go_to_cart{
+	height: 14px;
+	width:auto;
+	float:left;
+	margin-left:20px;
+	vertical-align: bottom;
 }
 
+img#add_to_cart {
+	height: 12px;
+	width: auto;
+	float: right;
+	margin-right: 10px;
+	margin-bottom: 2px;
+	vertical-align: bottom;
+}
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Ad</title>
 </head>
+
 <body>
-<!-- <table style="width:100%">
-<tr>
-<td align="right"><img id="close_ad" src="img/killCorner.png" position:top right width=auto height="40px" alt="Close Ad"></td>
-</tr>
-</table>-->
-
-<!--<img id="close_ad" src="img/killCorner.png" position:top right width=auto height="40px" alt="Close Ad">-->
-
-<!--<table style="width:100%">
-<tr>
-<td><img id="book_img" src="" alt="More Info" align="middle" width="225.28px" height="337.92px" ></td>
-</tr>
-</table>-->
-<!--<table cellspacing="10">
-<tr>
-<img id="book_img" src="" alt="More Info" align="middle" width="225.28px" height="337.92px" >
-<img src="img/killCorner.png" position:top right width=auto height="40px" alt="Close Ad">
-</tr>
-</table>-->
-
-<div style="position: relative; left: 0; top: 0;">
-  <img id="book_img" alt="Book" width="225.28px" height="337.92px" style="position: relative; top:10px; left:10px;box-shadow: 10px 10px 5px #888888;"/>
-  <img id="close_ad"  src="img/close.png" width=auto height="22px" style="position: absolute; top: 0px; left: 220px;"/>
-  <!--  <img id="more_info" src="img/ver1_1.png" width=auto height="45px" alt="More Info" style="position: absolute; top: 350px; left: 0px;"/>-->
-  <img id="add_to_cart" src="img/saveForLaterIcon4.png" width=auto height="28px" alt="Ad To Cart" style="position: absolute; top: 365px; left: 85px;"/>
-  <img id="go_to_cart" src="img/cart.png" width=auto height="25px" alt="Go to Cart" style="position: absolute;top: 365px; left:0px;"/> 
+<div class="AdWrapper">
+  <div id="close_ad"><img src="img/icon_close.png"/></div>
+  <img id="book_img" alt="Book"/>
+  <div class="Wrapper">
+    <img id="go_to_cart" src="img/cart1.png"/><img id="add_to_cart" src="img/SaveForLaterIcon.png"/>
+  </div>
 </div>
 <br>
-
-<!-- <table style="width:100%">
-<tr>
-<td><img id="more_info" src="img/ver1_1.png" width=auto height="40px" alt="More Info"></td>
-<td><img id="add_to_cart" src="img/saveForLater.png" width=auto height="40px" alt="Ad To Cart"></td>
-<td><img id="go_to_cart" src="img/ver2_2.png" width=auto height="40px" alt="Go to Cart"></td>
-</tr>
-</table>-->
-
-<!--  <div style="position: relative; left: 0; top: 500; ">
-	<img id="more_info" src="img/ver1_1.png" width=auto height="40px" alt="More Info" style="position: relative; "/>
-	<img id="add_to_cart" src="img/saveForLater.png" width=auto height="40px" alt="Ad To Cart" style="position: relative; "/>
-	<img id="go_to_cart" src="img/ver2_2.png" width=auto height="40px" alt="Go to Cart" style="position: relative;"/>
-</div>-->
-
-
 </body>
 </html>
