@@ -29,10 +29,10 @@ $(document).ready(function(){
                 sessionStorage.setItem('traceId', traceId);
                 setCookie("traceId", traceId, 30);
                 behaviourUpdate(asin,devId,'showAd',traceId);
-                if (navigator.geolocation) 
+                /*if (navigator.geolocation) 
                 {
                 	navigator.geolocation.getCurrentPosition(sendLocation);
-            	} 
+            	} */
             },
             error: function (err) {
             } 
@@ -49,7 +49,16 @@ $(document).ready(function(){
             	if(data.cart_quantity>0)
             		{
             			sessionStorage.setItem('cart_quantity', data.cart_quantity);
-            			$('#cart_size').text(data.cart_quantity);
+            			imgLink = 'img/CartIcon_' + data.cart_quantity + '.png';
+            			if(data.cart_quantity>5)
+            			{
+            				imgLink = 'img/CartIcon_more.png';
+            			}
+            			
+            			sessionStorage.setItem('cart_img', imgLink);
+            			//alert(imgLink)
+            			$("#go_to_cart").attr("src",imgLink);
+            			//$('#cart_size').text(data.cart_quantity);
             			$("#go_to_cart").show();
             		}
             },
@@ -62,6 +71,7 @@ $(document).ready(function(){
         $("#close_ad").click(closeAd)
         $("#more_info").click(getMoreInfo)
         $("#book_img").click(getMoreInfo)
+        
         function sendLocation(position) 
         {
            traceUpdate(sessionStorage.getItem('devId'),position.coords.latitude,position.coords.longitude,sessionStorage.getItem('traceId'));
@@ -107,12 +117,11 @@ body {
 </table>-->
 
 <div style="position: relative; left: 0; top: 0;">
-  <img id="book_img" width="225.28px" height="337.92px" style="position: relative; top: 0; left:10px;"/>
+  <img id="book_img" alt="Book" width="225.28px" height="337.92px" style="position: relative; top:10px; left:10px;box-shadow: 10px 10px 5px #888888;"/>
   <img id="close_ad"  src="img/close.png" width=auto height="22px" style="position: absolute; top: 0px; left: 220px;"/>
   <!--  <img id="more_info" src="img/ver1_1.png" width=auto height="45px" alt="More Info" style="position: absolute; top: 350px; left: 0px;"/>-->
-  <img id="add_to_cart" src="img/saveForLater.png" width=auto height="45px" alt="Ad To Cart" style="position: absolute; top: 350px; left: 75px;"/>
-  <img id="go_to_cart" src="img/ver2_2.png" width=auto height="45px" alt="Go to Cart" style="position: absolute;top: 350px; left: 180px;"/>
-  <textarea id="cart_size" style="resize: none; font-size: 1.0em;color: white; background-color: transparent;border: none;position: absolute;top: 345px; left: 225px" rows="1" cols="2"></textarea> 
+  <img id="add_to_cart" src="img/saveForLaterIcon4.png" width=auto height="28px" alt="Ad To Cart" style="position: absolute; top: 365px; left: 85px;"/>
+  <img id="go_to_cart" src="img/cart.png" width=auto height="25px" alt="Go to Cart" style="position: absolute;top: 365px; left:0px;"/> 
 </div>
 <br>
 

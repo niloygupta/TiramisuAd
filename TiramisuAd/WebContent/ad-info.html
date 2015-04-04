@@ -28,8 +28,8 @@ $(document).ready(function(){
    		
    		if(cart_quantity>0)
 		{
-			sessionStorage.setItem('cart_quantity', data.cart_quantity);
-			$('#cart_size').text(data.cart_quantity);
+			//$("#cart_size").text(cart_quantity);
+			$("#go_to_cart").attr("src",sessionStorage.getItem('cart_img'));
 			$("#go_to_cart").show();
 		}
    		
@@ -70,15 +70,24 @@ body {
 </tr>
 </table>-->
 
-<textarea id="book_title" style="resize: none; font-size: 1.5em;color: white; background-color: transparent;border: none" rows="4" cols="10">
+<div style="position: relative; left: 0; top: 0; border: 0.1px;border-style: solid;border-color: #b28A7F #b28A7F;">
+<textarea id="book_title" style="position: relative;overflow:hidden;left: 10px; resize: none; font-family:Courier New Bold;font-size: 1.5em;color: white; background-color: transparent;border: none" rows="2" cols="15">
 </textarea>
 <br>
-<textarea id="book_intro" style="font-size: 0.75em;color: white; background-color: transparent;border: none" rows="15" cols="30">
+<textarea id="book_intro" style="position: relative;left: 10px;scrollbar-base-color: transparent;;resize: none;font-size: 0.75em;font-family:Courier New;color: white; background-color: transparent;border: none" rows="20" cols="30">
 </textarea>
+<img id="add_to_cart" src="img/saveToCartIcon.png" width=auto height="28px" alt="Ad To Cart" style="position: absolute; top: 365px; left: 95px;"/>
+<img id="go_to_cart" src="img/cart.png" width=auto height="25px" alt="Go to Cart" style="position: absolute; top:365px; left:0px;"/>
+<!-- <textarea readonly id="cart_size" style="resize: none; font-size: 0.75em;color: white; background-color: transparent;border: none;position: absolute;top:355px; left: 16px" rows="1" cols="2"></textarea>--> 
+</div>
+<img id="close_ad"  src="img/close.png" width=auto height="22px" style="position: absolute; top: 0px; left: 240px;"/>
 
-<div style="position: relative; left: 0; top: 340; ">
-	<img id="add_to_cart" src="img/saveForLater.png" width=auto height="45px" alt="Ad To Cart" style="position: relative; top: 0px; left: 0px;"/>
-	<img id="go_to_cart" src="img/ver2_2.png" width=auto height="45px" alt="Go to Cart" style="position: relative; top: 0px; left: 34px;"/>
+<div style="position: absolute; left: 0; top: 540; ">
+	<!--  <img id="add_to_cart" src="img/saveForLater2.png" width=auto height="25px" alt="Ad To Cart" style="position: relative; top: 0px; left: 70px;"/>
+	<img id="go_to_cart" src="img/ver2_2.png" width=auto height="45px" alt="Go to Cart" style="position: relative; top: 0px; left: 10px;"/>-->
+	<!-- <img id="add_to_cart" src="img/saveForLater2.png" width=auto height="15px" alt="Ad To Cart" style="position: absolute; top: 20px; left: 70px;"/>
+  	<img id="go_to_cart" src="img/cart.png" width=auto height="30px" alt="Go to Cart" style="position: absolute; top:15px; left:0px;"/>
+  	<textarea readonly id="cart_size" style="resize: none; font-size: 0.75em;color: white; background-color: transparent;border: none;position: absolute;top:15px; left: 16px" rows="1" cols="2"></textarea>--> 
 </div>
 </body>
 </html>

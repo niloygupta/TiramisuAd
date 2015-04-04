@@ -7,8 +7,6 @@ function getMoreInfo()
 
 function addBookToCart(event) 
 {
-	
-	
 	asin = sessionStorage.getItem('asin');
 	devId = sessionStorage.getItem('devId');
 	traceId = sessionStorage.getItem('traceId');
@@ -22,13 +20,14 @@ function addBookToCart(event)
         data: 'mtype=addcart&devIdentifier='+devId+'&quantity=1&productASIN='+asin,
         success: function (data) {
         	if(data.result=="success")
-        		alert("Added Book Successfully")
+        		alert("Added Book Successfully");
         	else
-        		alert("Unable to Add Book")
+        		alert("Unable to Add Book");
         	closeAd();
         			
         },
         error: function (err) {
+        	alert(err);
         }
   
 		});
@@ -61,9 +60,14 @@ function addBookToCart(event)
         		//window.open(data.purl);
         		top.window.location.href=data.purl;
         	}
+        	else
+        		{
+        		alert("Unable to add book to cart. Please try later.");
+        		}
         		//window.open(data.purl);	
         },
         error: function (err) {
+        	alert("Unable to add book to cart. Please try later.");
         	
         }
   
