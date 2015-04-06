@@ -74,8 +74,11 @@ body {
 #book_intro{
 	padding: 0px 10px 10px 10px;
 	max-width: 245px;
-	max-height: 300px;
-	overflow: scroll;
+	max-height: 250px;
+	overflow-y: scroll;
+}
+#book_intro::-webkit-scrollbar {
+	width:5px;
 }
 .InfoWrapper h1 {
 	font-size: 1.4em;
@@ -95,6 +98,7 @@ margin-top: 10px;
 margin-bottom: 10px;
 height: auto;
 width: 100%;
+max-height: 405px;
 overflow: inherit;
 }
 img#go_to_cart{
