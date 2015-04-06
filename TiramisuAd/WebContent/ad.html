@@ -94,7 +94,8 @@ body {
 .AdWrapper {
 	background-color: rgba(0,0,0,0.60);
 	position: relative;
-	width: 225.28px;
+	alignment-baseline:central;
+	width: 100%;
 	height: 100%;
 	min-height: 380px;
 	padding-left: 10px;
@@ -105,15 +106,17 @@ body {
 	width: 22px;
 	float: right top;
 	position: absolute;
-	top: -6px;
-	right: -6px;
+	top: 0px;
+	right: 0px;
 	z-index: 99;
 }
-.AdWrapper #book_img {
-	width: 225.28px;
-	height: 337.92px;
-	position: fixed;
-	padding: 0 0 20px 0;
+
+#book_img {
+	width: 100%;
+	height: auto;
+	position: relative;
+	padding: 0 0 10px 0;
+
 }
 /*-- Operation Area --*/
 .Wrapper {
