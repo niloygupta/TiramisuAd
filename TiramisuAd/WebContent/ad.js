@@ -25,6 +25,7 @@ function getProductPage()
     		/*window.location.href = data.purl;
     		window.location.assign(data.purl);*/
     		//window.open(data.purl);
+    		//alert(data.producturl);
     		top.window.location.href=data.producturl;
     	}
     	else
@@ -57,10 +58,10 @@ function addBookToCart(event)
         dataType: "jsonp",
         data: 'mtype=addcart&devIdentifier='+devId+'&quantity=1&productASIN='+asin,
         success: function (data) {
-        	if(data.result=="success")
+        	/*if(data.result=="success")
         		alert("Added Book Successfully");
         	else
-        		alert("Unable to Add Book");
+        		alert("Unable to Add Book");*/
         	closeAd();
         			
         },
@@ -179,10 +180,25 @@ function genDevId(callback)
     	//self.close ();
     	//open(location, '_self').close();
     	//window.history.back();
-    	//window.close();
-    	customURL = "empty.html";
-    	window.location.href = customURL;
-    	window.location.assign(customURL);
+    	//window.close(); height: '10px'
+    	
+    	$("#close_ad").hide();
+    	$("#add_to_cart").hide();
+    	$("#go_to_cart").hide();
+    	$("#book_img").animate({ top: 400, left: 10, height: '10px',width: '10px', opacity: '0'}, "slow",function() {
+    		customURL = "empty.html";
+        	window.location.href = customURL;
+        	window.location.assign(customURL);
+
+    	});
+    	
+    	/*$(".AdWrapper" ).toggle({ effect: "scale", direction: "horizontal" },function() {
+    		customURL = "empty.html";
+        	window.location.href = customURL;
+        	window.location.assign(customURL);
+
+    	});*/
+    	
     }
     
     
