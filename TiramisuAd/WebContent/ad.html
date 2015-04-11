@@ -10,8 +10,9 @@
 $(document).ready(function(){
    		//var devId = getDeviceId();//'beb610f1-2c1e-4b79-b075-083c9b2df7ea'
 		$("#go_to_cart").hide();
+		$("#add_to_cart").hide();
    		var devId = getCookie("devId");
-
+		var adGroup = getCookie("adGroup");
         $.ajax({
             type: "GET",
             url: "http://ec2-54-165-114-150.compute-1.amazonaws.com:8080/ajServer/info",
@@ -23,6 +24,12 @@ $(document).ready(function(){
             	$('#book_img').attr("src",data.imgurl);
             	asin = data.asin;
             	devId = data.devId;
+            	adGroup = data.adgroup;
+            	setCookie("adGroup", adGroup, 30);
+            	if(adGroup > 0)
+            	{
+            		$("#add_to_cart").show();
+            	}
             	sessionStorage.setItem('asin', asin);
             	sessionStorage.setItem('devId', devId);
             	setCookie("devId", devId, 30);
@@ -48,7 +55,7 @@ $(document).ready(function(){
             dataType: "jsonp",
             data: 'mtype=fetchcartinfo&devIdentifier='+devId,
             success: function (data) {
-            	if(data.cart_quantity>0)
+            	if(data.cart_quantity>0 && adGroup>0)
             		{
             			sessionStorage.setItem('cart_quantity', data.cart_quantity);
             			imgLink = 'img/cart' + data.cart_quantity + '.png';
@@ -71,8 +78,7 @@ $(document).ready(function(){
    		$("#add_to_cart").click(addBookToCart);
         $("#go_to_cart").click(goToCart);
         $("#close_ad").click(closeAd)
-        $("#more_info").click(getMoreInfo)
-        $("#book_img").click(getMoreInfo)
+        $("#book_img").click(getProductPage)
         function sendLocation(position) 
         {
            traceUpdate(sessionStorage.getItem('devId'),position.coords.latitude,position.coords.longitude,sessionStorage.getItem('traceId'));

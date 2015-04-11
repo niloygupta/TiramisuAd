@@ -1,8 +1,46 @@
-function getMoreInfo()
+/*function getMoreInfo()
 {
 	customURL = "ad-info.html";
 	window.location.href = customURL;
 	window.location.assign(customURL);
+}*/
+
+function getProductPage()
+{
+	
+	asin = sessionStorage.getItem('asin');
+	devId = sessionStorage.getItem('devId');
+	traceId = sessionStorage.getItem('traceId');
+
+	
+	$.ajax({
+        type: "GET",
+    url: "http://ec2-54-165-114-150.compute-1.amazonaws.com:8080/ajServer/info",
+    crossDomain: true,
+    dataType: "jsonp",
+    data: 'mtype=productURL&asin='+asin,
+    success: function (data) {
+    	if(data.result=="success")
+    	{
+    		/*window.location.href = data.purl;
+    		window.location.assign(data.purl);*/
+    		//window.open(data.purl);
+    		top.window.location.href=data.producturl;
+    	}
+    	else
+    		{
+    		alert("Unable to show product page. Please try later.");
+    		}
+    		//window.open(data.purl);	
+    },
+    error: function (err) {
+    	alert("Unable to add book to cart. Please try later.");
+    	
+    }
+
+	});
+	behaviourUpdate(asin,devId,'moreinfo',traceId);
+
 }
 
 function addBookToCart(event) 
