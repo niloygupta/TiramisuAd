@@ -12,8 +12,8 @@ $(document).ready(function(){
 		$("#go_to_cart").hide();
 		$("#add_to_cart").hide();
    		var devId = getCookie("devId");
-		var adGroup = getCookie("adGroup");
 		//var adGroup = getCookie("adGroup");
+		var adGroup = 0;
         $.ajax({
             type: "GET",
             url: "http://ec2-54-165-114-150.compute-1.amazonaws.com:8080/ajServer/info",
@@ -25,7 +25,7 @@ $(document).ready(function(){
             	$('#book_img').attr("src",data.imgurl);
             	asin = data.asin;
             	devId = data.devId;
-            	adGroup = data.adgroup;
+            	//adGroup = data.adgroup;
             	setCookie("adGroup", adGroup, 30);
             	if(adGroup > 0)
             	{
