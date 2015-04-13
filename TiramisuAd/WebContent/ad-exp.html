@@ -12,6 +12,8 @@ $(document).ready(function(){
 		$("#go_to_cart").hide();
 		$("#add_to_cart").hide();
    		var devId = getCookie("devId");
+   		exitPageURL = 'empty-exp.html';
+   		sessionStorage.setItem('exitPageURL', exitPageURL);
 		//var adGroup = getCookie("adGroup");
 		var adGroup = 1;
         $.ajax({
@@ -78,12 +80,13 @@ $(document).ready(function(){
        
    		$("#add_to_cart").click(addBookToCart);
         $("#go_to_cart").click(goToCart);
-        $("#close_ad").click(closeAd)
-        $("#book_img").click(getProductPage)
+        $("#close_ad").click(closeAd);
+        $("#book_img").click(getProductPage);
         function sendLocation(position) 
         {
            traceUpdate(sessionStorage.getItem('devId'),position.coords.latitude,position.coords.longitude,sessionStorage.getItem('traceId'));
         }
+        
         
         /*function closeAd()
         {

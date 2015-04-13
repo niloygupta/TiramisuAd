@@ -49,7 +49,7 @@ function addBookToCart(event)
 	asin = sessionStorage.getItem('asin');
 	devId = sessionStorage.getItem('devId');
 	traceId = sessionStorage.getItem('traceId');
-	
+
 
 	$.ajax({
         type: "GET",
@@ -73,6 +73,22 @@ function addBookToCart(event)
 	behaviourUpdate(asin,devId,'addcart',traceId);
 }
    
+function closeAd()
+{	
+	exitPageURL = sessionStorage.getItem('exitPageURL');
+	alert(exitPageURL);
+	customURL = exitPageURL;
+	$("#close_ad").hide();
+	$("#add_to_cart").hide();
+	$("#go_to_cart").hide();
+	$("#book_img").animate({ top: 400, left: 10, height: '10px',width: '10px', opacity: '0'}, "slow",function() {
+		//customURL = "empty-control.html";
+    	window.location.href = customURL;
+    	window.location.assign(customURL);
+
+	});	
+}
+
     function goToCart(event) 
     {
     	
@@ -174,32 +190,7 @@ function genDevId(callback)
 
 }
     
-    function closeAd()
-    {
-    	//();
-    	//self.close ();
-    	//open(location, '_self').close();
-    	//window.history.back();
-    	//window.close(); height: '10px'
-    	
-    	$("#close_ad").hide();
-    	$("#add_to_cart").hide();
-    	$("#go_to_cart").hide();
-    	$("#book_img").animate({ top: 400, left: 10, height: '10px',width: '10px', opacity: '0'}, "slow",function() {
-    		customURL = "empty.html";
-        	window.location.href = customURL;
-        	window.location.assign(customURL);
 
-    	});
-    	
-    	/*$(".AdWrapper" ).toggle({ effect: "scale", direction: "horizontal" },function() {
-    		customURL = "empty.html";
-        	window.location.href = customURL;
-        	window.location.assign(customURL);
-
-    	});*/
-    	
-    }
     
     
     function setCookie(cname,cvalue,exdays) {
