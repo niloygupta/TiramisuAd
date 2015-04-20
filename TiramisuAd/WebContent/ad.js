@@ -44,12 +44,13 @@ function getProductPage()
 
 }
 
-function addBookToCart(event) 
+function addBookToCart() 
 {
+	
 	asin = sessionStorage.getItem('asin');
 	devId = sessionStorage.getItem('devId');
 	traceId = sessionStorage.getItem('traceId');
-
+	
 
 	$.ajax({
         type: "GET",
@@ -76,11 +77,10 @@ function addBookToCart(event)
 function closeAd()
 {	
 	exitPageURL = sessionStorage.getItem('exitPageURL');
-	alert(exitPageURL);
 	customURL = exitPageURL;
-	$("#close_ad").hide();
-	$("#add_to_cart").hide();
-	$("#go_to_cart").hide();
+	$("#close_ad_img").hide();
+	$("#save").hide();
+	$("#cart").hide();
 	$("#book_img").animate({ top: 400, left: 10, height: '10px',width: '10px', opacity: '0'}, "slow",function() {
 		//customURL = "empty-control.html";
     	window.location.href = customURL;
@@ -89,7 +89,7 @@ function closeAd()
 	});	
 }
 
-    function goToCart(event) 
+    function goToCart() 
     {
     	
     	/*asin = getCookie("asin");
