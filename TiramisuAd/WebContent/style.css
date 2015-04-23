@@ -45,7 +45,7 @@ body {
 	height: 100%;
 	position: relative;
 	margin-top:inherit;
-	left:94%;
+	left:90%;
 	top:-80%;
 	z-axis:3;
 }	
@@ -54,21 +54,24 @@ body {
 	/*background-color: rgba(255,255,255,1);
 	border-style: solid;
 	border-width: 1px;*/
-	width: 100%;
+	width: 50%;
 	height: 15%;
 	position: absolute;
 	top: 85%;
-	z-axis: -3;
+	z-axis: -20;
+	text-align: left;
 }
 
 .AdNav2 {
 	/*background-color: rgba(255,255,255,1);
 	border-style: solid;
-	border-width: 1px;*/
-	width: 100%;
+	border-width: 1px;
+	width: 50%;*/
+	width: 50%;
 	height: 15%;
 	position: absolute;
 	top: 85%;
+	right: 10%;
 	z-axis: -20;
 	text-align: right;
 }
@@ -87,7 +90,7 @@ body {
 
 	
 #close_ad_img {
-	width: 100%;
+	width: 200%;
 	position: relative;
 }
 
