@@ -80,9 +80,10 @@ function closeAd()
 	customURL = exitPageURL;
 	$("#close_ad_img").hide();
 	$("#save").hide();
-	$("#cart").hide();
-	$("#book_img").animate({ top: 400, left: 10, height: '10px',width: '10px', opacity: '0'}, "slow",function() {
+	
+	$("#book_img").animate({ top: '400px', left: '-100px', height: '10px',width: '10px', opacity: '0'}, "slow",function() {
 		//customURL = "empty-control.html";
+		$("#cart").hide();
     	window.location.href = customURL;
     	window.location.assign(customURL);
 
