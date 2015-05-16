@@ -90,6 +90,22 @@ function closeAd()
 	});	
 }
 
+
+function closeAdButton()
+{	
+	exitPageURL = sessionStorage.getItem('exitPageURL');
+	customURL = exitPageURL;
+	$("#close_ad_img").hide();
+	$("#save").hide();
+	$("#cart").hide();
+	
+	$("#book_img").animate({ top: '20px', left: '100px', height: '10px',width: '10px', opacity: '0'}, "slow",function() {
+    	window.location.href = customURL;
+    	window.location.assign(customURL);
+    	behaviourUpdate(asin,devId,'closead',traceId);
+	});	
+}
+
     function goToCart() 
     {
     	
